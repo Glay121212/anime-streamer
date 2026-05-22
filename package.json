@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "dev": "electron . --dev"
+    "dev": "electron . --dev",
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "axios": "^1.6.0",
