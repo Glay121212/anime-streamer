@@ -2,6 +2,8 @@
   "name": "anime-streamer",
   "version": "1.0.0",
   "main": "electron.js",
+  "description": "Search movies, TV shows, and anime across 15 streaming sites. Launch videos in VLC or MPV.",
+  "author": "Anime Streamer",
   "homepage": "./",
   "scripts": {
     "start": "electron .",
@@ -40,8 +42,7 @@
       }
     ],
     "win": {
-      "target": ["nsis", "portable"],
-      "signingHashAlgorithms": ["sha256"]
+      "target": ["nsis", "portable"]
     },
     "nsis": {
       "oneClick": false,
