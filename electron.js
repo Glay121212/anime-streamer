@@ -126,6 +126,16 @@ ipcMain.handle('update-settings', async (event, settings) => {
   }
 });
 
+ipcMain.handle('get-tmdb-seasons', async (event, tvId) => {
+  try {
+    const tmdb = new TMDB(process.env.TMDB_API_KEY || '');
+    return await tmdb.getSeasons(tvId);
+  } catch (error) {
+    console.error('get-tmdb-seasons error:', error);
+    return [];
+  }
+});
+
 ipcMain.handle('launch-player', async (event, { url, player: playerName }) => {
   try {
     const settings = store.get('settings', {});

@@ -11,4 +11,5 @@ contextBridge.exposeInMainWorld('api', {
   launchPlayer: (url, player) => ipcRenderer.invoke('launch-player', { url, player }),
   getSettings: () => ipcRenderer.invoke('get-settings'),
   updateSettings: (settings) => ipcRenderer.invoke('update-settings', settings),
+  getTMDBSeasons: (tvId) => ipcRenderer.invoke('get-tmdb-seasons', tvId),
 });
