@@ -1,0 +1,38 @@
+{
+  "name": "anime-streamer",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dev": "electron . --dev"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  },
+  "build": {
+    "appId": "com.animestreamer.app",
+    "productName": "Anime Streamer",
+    "files": [
+      "electron.js",
+      "preload.js",
+      "src/**/*",
+      "services/**/*",
+      "config/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": ["nsis", "portable"]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
