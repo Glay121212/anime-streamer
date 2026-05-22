@@ -50,6 +50,7 @@ app.on('activate', () => {
 // For now, provide stubs to prevent runtime errors
 
 const Store = require('electron-store');
+const Player = require('./services/player');
 const store = new Store();
 
 ipcMain.handle('search-tmdb', async (event, query) => {
@@ -124,13 +125,20 @@ ipcMain.handle('update-settings', async (event, settings) => {
   }
 });
 
-ipcMain.handle('launch-player', async (event, params) => {
+ipcMain.handle('launch-player', async (event, { url, player: playerName }) => {
   try {
-    // TODO: Implemented in Task 4
-    console.log('launchPlayer handler called:', params);
-    return { success: false, error: 'Not implemented yet' };
+    const settings = store.get('settings', {});
+    let playerPath = settings.customPlayerPath;
+    const p = new Player();
+    if (!playerPath) {
+      playerPath = playerName === 'mpv' ? p.getMPVPath() : p.getVLCPath();
+    }
+    if (!playerPath) {
+      return { success: false, error: `Player not found: ${playerName}` };
+    }
+    await p.launch(url, playerPath);
+    return { success: true };
   } catch (error) {
-    console.error('launchPlayer error:', error);
-    throw error;
+    return { success: false, error: error.message };
   }
 });
