@@ -136,6 +136,15 @@ ipcMain.handle('get-tmdb-seasons', async (event, tvId) => {
   }
 });
 
+ipcMain.handle('launch-video-search', async (event, { title, type }) => {
+  try {
+    const result = await scraper.searchAndExtract(title, type);
+    return result;
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
 ipcMain.handle('launch-player', async (event, { url, player: playerName }) => {
   try {
     const settings = store.get('settings', {});

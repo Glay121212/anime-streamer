@@ -12,4 +12,6 @@ contextBridge.exposeInMainWorld('api', {
   getSettings: () => ipcRenderer.invoke('get-settings'),
   updateSettings: (settings) => ipcRenderer.invoke('update-settings', settings),
   getTMDBSeasons: (tvId) => ipcRenderer.invoke('get-tmdb-seasons', tvId),
+  launchVideoSearch: (title, type) => 
+    ipcRenderer.invoke('launch-video-search', { title, type }),
 });
