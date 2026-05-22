@@ -21,6 +21,9 @@
   "build": {
     "appId": "com.animestreamer.app",
     "productName": "Anime Streamer",
+    "directories": {
+      "buildResources": "assets"
+    },
     "files": [
       "electron.js",
       "preload.js",
@@ -37,11 +40,14 @@
       }
     ],
     "win": {
-      "target": ["nsis", "portable"]
+      "target": ["nsis", "portable"],
+      "signingHashAlgorithms": ["sha256"]
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }
