@@ -3,8 +3,6 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 
-const isDev_legacy = process.env.NODE_ENV === 'development' || process.argv.includes('--dev');
-
 let mainWindow;
 
 function createWindow() {
@@ -21,7 +19,7 @@ function createWindow() {
 
     const startURL = isDev
       ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`;
+      : `file://${path.join(__dirname, 'src/index.html')}`;
     
     mainWindow.loadURL(startURL);
     
@@ -54,7 +52,6 @@ app.on('activate', () => {
 const Store = require('electron-store');
 const store = new Store();
 
-// Stub handlers that will be replaced/enhanced by actual implementations
 ipcMain.handle('search-tmdb', async (event, query) => {
   try {
     // TODO: Implemented in Task 3
@@ -94,7 +91,7 @@ ipcMain.handle('add-history', async (event, query) => {
     return history;
   } catch (error) {
     console.error('addHistory error:', error);
-    return [];
+    throw error;
   }
 });
 
@@ -104,7 +101,7 @@ ipcMain.handle('clear-history', async (event) => {
     return [];
   } catch (error) {
     console.error('clearHistory error:', error);
-    return [];
+    throw error;
   }
 });
 
