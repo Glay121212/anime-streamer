@@ -1,0 +1,23 @@
+{
+  "movies": [
+    { "name": "FMovies", "domain": "fmovies.to", "searchUrl": "https://fmovies.to/search?keyword={query}" },
+    { "name": "SMovies", "domain": "smovies.tv", "searchUrl": "https://smovies.tv/search?q={query}" },
+    { "name": "Lookmovie", "domain": "lookmovie.io", "searchUrl": "https://lookmovie.io/search?q={query}" },
+    { "name": "GoMovies", "domain": "gomovies.sx", "searchUrl": "https://gomovies.sx/search/{query}" },
+    { "name": "Flixtor", "domain": "flixtor.to", "searchUrl": "https://flixtor.to/search?q={query}" }
+  ],
+  "tv": [
+    { "name": "FMovies", "domain": "fmovies.to", "searchUrl": "https://fmovies.to/search?keyword={query}" },
+    { "name": "SMovies", "domain": "smovies.tv", "searchUrl": "https://smovies.tv/search?q={query}" },
+    { "name": "SeriesWatch", "domain": "serieswatch.org", "searchUrl": "https://serieswatch.org/?s={query}" },
+    { "name": "SeriesTop", "domain": "seriestop.net", "searchUrl": "https://seriestop.net/?s={query}" },
+    { "name": "WatchSeries", "domain": "watchseries.co", "searchUrl": "https://watchseries.co/search?q={query}" }
+  ],
+  "anime": [
+    { "name": "Zoro", "domain": "zoro.to", "searchUrl": "https://zoro.to/search?keyword={query}" },
+    { "name": "Aniwatch", "domain": "aniwatch.to", "searchUrl": "https://aniwatch.to/search?keyword={query}" },
+    { "name": "GogoAnime", "domain": "gogoanime.cm", "searchUrl": "https://gogoanime.cm/search.html?keyword={query}" },
+    { "name": "Animepahe", "domain": "animepahe.com", "searchUrl": "https://animepahe.com/?s={query}" },
+    { "name": "9Anime", "domain": "9anime.to", "searchUrl": "https://9anime.to/search?keyword={query}" }
+  ]
+}

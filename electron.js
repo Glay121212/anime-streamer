@@ -50,28 +50,29 @@ app.on('activate', () => {
 // For now, provide stubs to prevent runtime errors
 
 const Store = require('electron-store');
+const TMDB = require('./services/tmdb');
+const Scraper = require('./services/scraper');
 const Player = require('./services/player');
 const store = new Store();
+const scraper = new Scraper();
 
 ipcMain.handle('search-tmdb', async (event, query) => {
   try {
-    // TODO: Implemented in Task 3
-    console.log('searchTMDB handler called:', query);
-    return [];
+    const tmdb = new TMDB(process.env.TMDB_API_KEY || '');
+    const results = await tmdb.search(query);
+    return results;
   } catch (error) {
     console.error('searchTMDB error:', error);
-    throw error;
+    return [];
   }
 });
 
-ipcMain.handle('search-sites', async (event, params) => {
+ipcMain.handle('search-sites', async (event, { title, type, season, episode }) => {
   try {
-    // TODO: Implemented in Task 5
-    console.log('searchSites handler called:', params);
-    return { success: false, error: 'Not implemented yet' };
+    const result = await scraper.searchAndExtract(title, type, season, episode);
+    return result;
   } catch (error) {
-    console.error('searchSites error:', error);
-    throw error;
+    return { success: false, error: error.message };
   }
 });
 
