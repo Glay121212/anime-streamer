@@ -27,7 +27,14 @@
       "src/**/*",
       "services/**/*",
       "config/**/*",
+      "bin/**/*",
       "node_modules/**/*"
+    ],
+    "extraFiles": [
+      {
+        "from": "bin/yt-dlp.exe",
+        "to": "bin/yt-dlp.exe"
+      }
     ],
     "win": {
       "target": ["nsis", "portable"]
